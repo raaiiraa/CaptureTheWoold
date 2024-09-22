@@ -87,35 +87,25 @@ public class BlockManager implements Listener
 			return;
 		}
 		
-		if(regen.containsKey(e.getBlock().getType()))
-		{
+		if(regen.containsKey(e.getBlock().getType())) {
 			e.setCancelled(true);
 			Material b = e.getBlock().getType();
-			if(e.getBlock().getType() == Material.LEGACY_WOOD)
-			{
+			if (e.getBlock().getType() == Material.LEGACY_WOOD) {
 				e.getBlock().setType(Material.AIR);
-			}else
-			{
+			} else {
 				e.getBlock().setType(Material.COBBLESTONE);
 			}
-			CTW.getInstance().getServer().getScheduler().scheduleSyncDelayedTask(CTW.getInstance(), new Runnable()
-					{
+			CTW.getInstance().getServer().getScheduler().scheduleSyncDelayedTask(CTW.getInstance(), new Runnable() {
 
-						@Override
-						public void run() 
-						{
-							e.getBlock().setType(b);
-						}
-				
-					}, 10 * 20L);
+				@Override
+				public void run() {
+					e.getBlock().setType(b);
+				}
+
+			}, 10 * 20L);
 			e.getPlayer().getInventory().addItem(new ItemStack(this.getItem(b), regen.get(b)));
 			return;
 		}
-
-		//TODO: This is pretty stupid, just let the game handle it.
-		e.setCancelled(true);
-		e.getBlock().setType(Material.AIR);
-		e.getPlayer().getInventory().addItem(new ItemStack(e.getBlock().getType()));
 	}
 
 }
