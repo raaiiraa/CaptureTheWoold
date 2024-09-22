@@ -80,7 +80,6 @@ public class BlockManager implements Listener
 	@EventHandler
 	public void onBlockBreak(BlockBreakEvent e)
 	{
-		Bukkit.broadcastMessage("is this shit worken");
 		// Unbreakable.
 		if(unbreakable.contains(e.getBlock().getType()))
 		{
@@ -92,8 +91,6 @@ public class BlockManager implements Listener
 		{
 			e.setCancelled(true);
 			Material b = e.getBlock().getType();
-			//TODO: Remove test.
-			Bukkit.broadcastMessage(e.getBlock().getType().toString());
 			if(e.getBlock().getType() == Material.LEGACY_WOOD)
 			{
 				e.getBlock().setType(Material.AIR);
@@ -111,7 +108,6 @@ public class BlockManager implements Listener
 						}
 				
 					}, 10 * 20L);
-			Bukkit.broadcastMessage(e.getBlock().getType().toString());
 			e.getPlayer().getInventory().addItem(new ItemStack(this.getItem(b), regen.get(b)));
 			return;
 		}
