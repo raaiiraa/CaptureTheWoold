@@ -23,6 +23,8 @@ public class GameVars {
     private static int minPlayersRestart = 1;
     private static long countdownRestart = 15;
 
+    private static boolean autoRespawn = true;
+
     public static boolean getMotd()
     {
         return motd;
@@ -51,6 +53,11 @@ public class GameVars {
     public static boolean getAutoRestart()
     {
     	return autoRestart;
+    }
+
+    public static boolean getAutoRespawn()
+    {
+        return autoRespawn;
     }
     
     public static int getMinPlayersRestart()
@@ -84,10 +91,15 @@ public class GameVars {
             saveDefault(autoRestart, "Enable", true);
             saveDefault(autoRestart, "Min-Players", 1);
             saveDefault(autoRestart, "Countdown", 15);
+
+            saveDefault(gameVars, "Auto-Respawn", true);
+
             config.save(f);
         }
         ConfigurationSection gameVars = config.getConfigurationSection("GameVars");
         motd = config.getBoolean("Use-MOTD");
+
+        autoRespawn=gameVars.getBoolean("Auto-Respawn");
         
         //TODO: The gamemode thing.
         // GameMode gm;

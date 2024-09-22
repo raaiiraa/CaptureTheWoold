@@ -38,6 +38,7 @@ public class AnnounceBar
             Class<? extends Bar> bar = cl.asSubclass(Bar.class);
             Bar manager = bar.newInstance();
             this.bar = manager;
+
         }
         catch (Throwable t)
         {

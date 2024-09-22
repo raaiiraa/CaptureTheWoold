@@ -18,7 +18,6 @@ import com.gmail.lynx7478.ctw.game.GameListeners;
 import com.gmail.lynx7478.ctw.game.GameVars;
 import com.gmail.lynx7478.ctw.game.Lobby;
 import com.gmail.lynx7478.ctw.game.ScoreboardAPI;
-import com.gmail.lynx7478.ctw.game.autorespawn.RespawnHandler;
 import com.gmail.lynx7478.ctw.game.roles.Role;
 import com.gmail.lynx7478.ctw.game.roles.RoleListener;
 import com.gmail.lynx7478.ctw.game.roles.RoleManager;
@@ -64,10 +63,6 @@ public class CTW extends JavaPlugin {
         
         // Sets up the worlds folder.
         (this.worldDirectory = new File(this.getDataFolder()+File.separator+"Worlds")).mkdirs();
-
-        
-        // Auto-respawn handler.
-        RespawnHandler.register(this);
 
         // Initialize role manager.
         new RoleManager();

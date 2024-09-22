@@ -3,12 +3,7 @@ package com.gmail.lynx7478.ctw.game;
 import java.io.File;
 import java.util.logging.Level;
 
-import org.bukkit.Bukkit;
-import org.bukkit.GameMode;
-import org.bukkit.Location;
-import org.bukkit.Material;
-import org.bukkit.World;
-import org.bukkit.WorldCreator;
+import org.bukkit.*;
 import org.bukkit.World.Environment;
 import org.bukkit.entity.Player;
 
@@ -68,8 +63,16 @@ public class Game {
 					if(mapWorld != null)
 					{
 						mapWorld.setAutoSave(false);
-						mapWorld.setGameRuleValue("doMobSpawning", "false");
-						mapWorld.setGameRuleValue("doFireTick", "false");
+						// mapWorld.setGameRuleValue("doMobSpawning", "false");
+						// mapWorld.setGameRuleValue("doFireTick", "false");
+
+						mapWorld.setGameRule(GameRule.DO_MOB_SPAWNING, false);
+						mapWorld.setGameRule(GameRule.DO_FIRE_TICK, false);
+						if(GameVars.getAutoRespawn())
+						{
+							mapWorld.setGameRule(GameRule.DO_IMMEDIATE_RESPAWN, true);
+						}
+						//TODO: Test message.
 						Bukkit.broadcastMessage("returned map");
 						return mapWorld;
 					}
